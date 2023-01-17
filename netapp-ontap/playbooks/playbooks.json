@@ -1,0 +1,429 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - NetApp ONTAP - 1.0.0",
+      "description": "Sample playbooks for \"NetApp ONTAP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "playbook.png",
+      "uuid": "80e93035-a150-4a7b-b84c-4dc221a44ed3",
+      "id": 59,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Netapp",
+        "netapp-ontap"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Security Accounts",
+          "aliasName": null,
+          "tag": "#NetApp ONTAP",
+          "description": "Retrieves a list of user accounts in the cluster from NetApp ONTAP based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1673609430,
+          "collection": "/api/3/workflow_collections/80e93035-a150-4a7b-b84c-4dc221a44ed3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3caf1e03-9d59-4ffd-87ed-b04e81443148",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Security Accounts",
+              "description": null,
+              "arguments": {
+                "name": "NetApp ONTAP",
+                "config": "2b8ca67c-2bce-4f2f-bea4-d56c10cfabcb",
+                "params": {
+                  "fields": "",
+                  "order_by": "Ascending",
+                  "max_records": 20,
+                  "return_records": true,
+                  "return_timeout": 15
+                },
+                "version": "1.0.0",
+                "connector": "netapp-ontap",
+                "operation": "get_security_accounts",
+                "operationTitle": "Get Security Accounts",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2fe89757-57c5-4cc9-8ef0-04dff0b036c6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "482e6277-ca7c-448b-9adb-c3ad2624833e",
+                "title": "NetApp ONTAP: Get Security Accounts",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "3caf1e03-9d59-4ffd-87ed-b04e81443148"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Security Accounts",
+              "targetStep": "/api/3/workflow_steps/2fe89757-57c5-4cc9-8ef0-04dff0b036c6",
+              "sourceStep": "/api/3/workflow_steps/3caf1e03-9d59-4ffd-87ed-b04e81443148",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8a9fbf73-5172-45cc-ba9d-a3106ab047e2"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "0123f3f5-f143-4296-a5cd-e3ff70b4de2f",
+          "id": 761,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Netapp",
+            "netapp-ontap"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Security Roles",
+          "aliasName": null,
+          "tag": "#NetApp ONTAP",
+          "description": "Retrieves a list of roles configured in the cluster from NetApp ONTAP based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1673609388,
+          "collection": "/api/3/workflow_collections/80e93035-a150-4a7b-b84c-4dc221a44ed3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/eb6466a6-c043-4921-9769-9bf2091ac647",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Security Roles",
+              "description": null,
+              "arguments": {
+                "name": "NetApp ONTAP",
+                "config": "2b8ca67c-2bce-4f2f-bea4-d56c10cfabcb",
+                "params": {
+                  "fields": "",
+                  "order_by": "Ascending",
+                  "max_records": 20,
+                  "return_records": true,
+                  "return_timeout": 15
+                },
+                "version": "1.0.0",
+                "connector": "netapp-ontap",
+                "operation": "get_security_roles",
+                "operationTitle": "Get Security Roles",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8de580c3-2cfa-42d6-8a82-45bc6635866e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d00b6345-21b7-4389-a174-e2971259dd49",
+                "title": "NetApp ONTAP: Get Security Roles",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "eb6466a6-c043-4921-9769-9bf2091ac647"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Security Roles",
+              "targetStep": "/api/3/workflow_steps/8de580c3-2cfa-42d6-8a82-45bc6635866e",
+              "sourceStep": "/api/3/workflow_steps/eb6466a6-c043-4921-9769-9bf2091ac647",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4f107119-c7f4-426e-9479-58c9575ea6e3"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "21653abe-ae4d-4bb8-a166-7545284135a6",
+          "id": 763,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Netapp",
+            "netapp-ontap"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Security Audit Messages",
+          "aliasName": null,
+          "tag": "#NetApp ONTAP",
+          "description": "Retrieves the administrative audit log viewer from NetApp ONTAP based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1673609446,
+          "collection": "/api/3/workflow_collections/80e93035-a150-4a7b-b84c-4dc221a44ed3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/18ad8790-5d99-4370-bbc4-7f7eda0130c0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e1f93e9b-be6f-4627-8869-77b574db60ee",
+                "title": "NetApp ONTAP: Get Security Audit Messages",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "18ad8790-5d99-4370-bbc4-7f7eda0130c0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Security Audit Messages",
+              "description": null,
+              "arguments": {
+                "name": "NetApp ONTAP",
+                "config": "2b8ca67c-2bce-4f2f-bea4-d56c10cfabcb",
+                "params": {
+                  "index": "",
+                  "scope": "",
+                  "state": "",
+                  "fields": "",
+                  "location": "",
+                  "order_by": "Ascending",
+                  "timestamp": "",
+                  "command_id": "",
+                  "session_id": "",
+                  "application": "",
+                  "max_records": 20,
+                  "return_records": true,
+                  "return_timeout": 15
+                },
+                "version": "1.0.0",
+                "connector": "netapp-ontap",
+                "operation": "get_security_audit_messages",
+                "operationTitle": "Get Security Audit Messages",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "3bcdc224-0e4e-415e-8f83-4443cf90d895"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Security Audit Messages",
+              "targetStep": "/api/3/workflow_steps/3bcdc224-0e4e-415e-8f83-4443cf90d895",
+              "sourceStep": "/api/3/workflow_steps/18ad8790-5d99-4370-bbc4-7f7eda0130c0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "62a07b45-1409-4c14-a342-3f1e1575e87a"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "51f8efc7-05fd-467a-a960-060c861eae5a",
+          "id": 762,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Netapp",
+            "netapp-ontap"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update User Password",
+          "aliasName": null,
+          "tag": "#NetApp ONTAP",
+          "description": "Updates the password for a user account in NetApp ONTAP based on the username and password you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1673609516,
+          "collection": "/api/3/workflow_collections/80e93035-a150-4a7b-b84c-4dc221a44ed3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/26081794-332a-4033-a600-74223036c05d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update User Password",
+              "description": null,
+              "arguments": {
+                "name": "NetApp ONTAP",
+                "config": "2b8ca67c-2bce-4f2f-bea4-d56c10cfabcb",
+                "params": {
+                  "name": "svm_user1",
+                  "owner_name": "",
+                  "owner_uuid": "",
+                  "max_records": "newpassword"
+                },
+                "version": "1.0.0",
+                "connector": "netapp-ontap",
+                "operation": "update_user_password",
+                "operationTitle": "Update User Password",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2366d361-7294-46e8-bc71-7e4bf5841441"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "6ec3e23f-a60b-476d-ad2e-d98d1d48147f",
+                "title": "NetApp ONTAP: Update User Password",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "26081794-332a-4033-a600-74223036c05d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Update User Password",
+              "targetStep": "/api/3/workflow_steps/2366d361-7294-46e8-bc71-7e4bf5841441",
+              "sourceStep": "/api/3/workflow_steps/26081794-332a-4033-a600-74223036c05d",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "24840d50-69cf-4c2b-a7fd-24463abfb634"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "bdc777a1-d69d-49c0-a31e-b267fc3f1492",
+          "id": 764,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Netapp",
+            "netapp-ontap"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Netapp",
+    "netapp-ontap"
+  ]
+}

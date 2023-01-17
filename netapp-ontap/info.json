@@ -1,0 +1,498 @@
+{
+  "name": "netapp-ontap",
+  "label": "NetApp ONTAP",
+  "description": "ONTAP helps you create a storage infrastructure that reduces costs, accelerates critical workloads, and protects and secures data across your hybrid multicloud.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "Cloud Security",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "server_url",
+        "description": "URL or host of the NetApp ONTAP server to which you connect and perform the automated operations."
+      },
+      {
+        "title": "Username",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "username",
+        "description": "Username to access the NetApp ONTAP server to which you will connect and perform the automated operations."
+      },
+      {
+        "title": "Password",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "password",
+        "description": "Password used to access the NetApp ONTAP server to which you will connect and perform the automated operations."
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_security_accounts",
+      "title": "Get Security Accounts",
+      "description": "Retrieves a list of user accounts in the cluster from NetApp ONTAP based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_security_accounts",
+      "output_schema": {
+        "records": [
+          {
+            "owner": {
+              "_links": {
+                "self": {
+                  "href": ""
+                }
+              },
+              "name": "",
+              "uuid": ""
+            },
+            "locked": "",
+            "comment": "",
+            "_links": {
+              "self": {
+                "href": ""
+              }
+            },
+            "name": "",
+            "applications": [
+              {
+                "authentication_methods": [],
+                "application": "",
+                "second_authentication_method": ""
+              }
+            ],
+            "role": {
+              "_links": {
+                "self": {
+                  "href": ""
+                }
+              },
+              "name": ""
+            },
+            "scope": ""
+          }
+        ],
+        "_links": {
+          "next": {
+            "href": ""
+          },
+          "self": {
+            "href": ""
+          }
+        },
+        "num_records": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Fields",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "fields",
+          "description": "Specify the comma separated fields to return from NetApp ONTAP."
+        },
+        {
+          "title": "Limit",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "max_records",
+          "description": "Limit the number of records to be returned from NetApp ONTAP."
+        },
+        {
+          "title": "Return Records",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "return_records",
+          "value": true,
+          "description": "The default is true for GET calls. When set to false, only the number of records is returned from NetApp ONTAP."
+        },
+        {
+          "title": "Return Timeout",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "return_timeout",
+          "value": 15,
+          "description": "The number of seconds to allow the call to execute before returning. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
+        },
+        {
+          "title": "Sort Order",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
+          "name": "order_by",
+          "value": "asc",
+          "description": "Order results by specified fields and optional [asc|desc] direction. Default direction is ‘asc’ for ascending."
+        }
+      ]
+    },
+    {
+      "operation": "get_security_audit_messages",
+      "title": "Get Security Audit Messages",
+      "description": "Retrieves the administrative audit log viewer from NetApp ONTAP based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_security_audit_messages",
+      "output_schema": {
+        "records": [
+          {
+            "session_id": "",
+            "location": "",
+            "input": "",
+            "_links": {
+              "self": {
+                "href": ""
+              }
+            },
+            "application": "",
+            "node": {
+              "_links": {
+                "self": {
+                  "href": ""
+                }
+              },
+              "name": "",
+              "uuid": ""
+            },
+            "command_id": "",
+            "state": "",
+            "message": "",
+            "index": "",
+            "timestamp": "",
+            "user": "",
+            "svm": {
+              "name": ""
+            },
+            "scope": ""
+          }
+        ],
+        "_links": {
+          "next": {
+            "href": ""
+          },
+          "self": {
+            "href": ""
+          }
+        },
+        "num_records": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Timestamp",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "timestamp",
+          "description": "Specify the timestamp of the audit log to be fetched from NetApp ONTAP."
+        },
+        {
+          "title": "State",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "state",
+          "description": "State of the audit log that you want to fetch from NetApp ONTAP."
+        },
+        {
+          "title": "Application",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "application",
+          "description": "Application of the audit log that you want to fetch from NetApp ONTAP."
+        },
+        {
+          "title": "Session ID",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "session_id",
+          "description": "Session ID of the audit log that you want to fetch from NetApp ONTAP."
+        },
+        {
+          "title": "Scope",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "scope",
+          "description": "Scope of the audit log that you want to fetch from NetApp ONTAP. e.g. svm, cluster."
+        },
+        {
+          "title": "Command ID",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "command_id",
+          "description": "Command ID of the audit log that you want to fetch from NetApp ONTAP."
+        },
+        {
+          "title": "Index",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "index",
+          "description": "Index of the audit log that you want to fetch from NetApp ONTAP."
+        },
+        {
+          "title": "Location",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "location",
+          "description": "Location of the audit log that you want to fetch from NetApp ONTAP."
+        },
+        {
+          "title": "Fields",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "fields",
+          "description": "Specify the fields to return from NetApp ONTAP."
+        },
+        {
+          "title": "Limit",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "max_records",
+          "description": "Limit the number of records to be returned from NetApp ONTAP."
+        },
+        {
+          "title": "Return Records",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "return_records",
+          "value": true,
+          "description": "The default is true for GET calls. When set to false, only the number of records is returned from NetApp ONTAP."
+        },
+        {
+          "title": "Return Timeout",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "return_timeout",
+          "value": 15,
+          "description": "The number of seconds to allow the call to execute before returning. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
+        },
+        {
+          "title": "Sort Order",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
+          "name": "order_by",
+          "value": "asc",
+          "description": "Order results by specified fields and optional [asc|desc] direction. Default direction is ‘asc’ for ascending."
+        }
+      ]
+    },
+    {
+      "operation": "get_security_roles",
+      "title": "Get Security Roles",
+      "description": "Retrieves a list of roles configured in the cluster from NetApp ONTAP based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_security_roles",
+      "output_schema": {
+        "records": [
+          {
+            "owner": {
+              "_links": {
+                "self": {
+                  "href": ""
+                }
+              },
+              "name": "",
+              "uuid": ""
+            },
+            "privileges": [
+              {
+                "access": "",
+                "_links": {
+                  "self": {
+                    "href": ""
+                  }
+                },
+                "path": ""
+              }
+            ],
+            "builtin": "",
+            "_links": {
+              "self": {
+                "href": ""
+              }
+            },
+            "name": "",
+            "scope": ""
+          }
+        ],
+        "_links": {
+          "next": {
+            "href": ""
+          },
+          "self": {
+            "href": ""
+          }
+        },
+        "num_records": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Fields",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "fields",
+          "description": "Specify the fields to return from NetApp ONTAP."
+        },
+        {
+          "title": "Limit",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "max_records",
+          "description": "Limit the number of records to be returned from NetApp ONTAP."
+        },
+        {
+          "title": "Return Records",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "return_records",
+          "value": true,
+          "description": "The default is true for GET calls. When set to false, only the number of records is returned from NetApp ONTAP."
+        },
+        {
+          "title": "Return Timeout",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "return_timeout",
+          "value": 15,
+          "description": "The number of seconds to allow the call to execute before returning. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
+        },
+        {
+          "title": "Sort Order",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
+          "name": "order_by",
+          "value": "asc",
+          "description": "Order results by specified fields and optional [asc|desc] direction. Default direction is ‘asc’ for ascending."
+        }
+      ]
+    },
+    {
+      "operation": "update_user_password",
+      "title": "Update User Password",
+      "description": "Updates the password for a user account in NetApp ONTAP based on the username and password you have specified.",
+      "category": "investigation",
+      "annotation": "update_user_password",
+      "output_schema": {
+        "message": "",
+        "status": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "description": "User account name whose password you need to chnage in NetApp ONTAP."
+        },
+        {
+          "title": "Password",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "password",
+          "name": "max_records",
+          "description": "Limit the number of records to be returned from NetApp ONTAP."
+        },
+        {
+          "title": "Owner Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "owner_name",
+          "description": "Name of the SVM for an SVM-scoped user account in NetApp ONTAP."
+        },
+        {
+          "title": "Owner UUID",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "owner_uuid",
+          "description": "UUID of the SVM for an SVM-scoped user account in NetApp ONTAP."
+        }
+      ]
+    }
+  ]
+}
