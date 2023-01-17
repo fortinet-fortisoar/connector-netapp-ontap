@@ -17,3 +17,5 @@ sort_order_mapping = {
     "Ascending": "asc",
     "Descending": "desc"
 }
+
+ENDPOINT = '/api/security/'

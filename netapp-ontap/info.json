@@ -19,7 +19,7 @@
         "visible": true,
         "type": "text",
         "name": "server_url",
-        "description": "URL or host of the NetApp ONTAP server to which you connect and perform the automated operations. This information is contained in the host field when accessing the Akamai API."
+        "description": "URL or host of the NetApp ONTAP server to which you connect and perform the automated operations."
       },
       {
         "title": "Username",
@@ -28,7 +28,7 @@
         "visible": true,
         "type": "text",
         "name": "username",
-        "description": "Username to access the NetApp ONTAP server to which you will connect and perform the automated operations. This information is contained in the Client_token field when accessing the Akamai API."
+        "description": "Username to access the NetApp ONTAP server to which you will connect and perform the automated operations."
       },
       {
         "title": "Password",
@@ -37,7 +37,7 @@
         "visible": true,
         "type": "password",
         "name": "password",
-        "description": "Password used to access the NetApp ONTAP server to which you will connect and perform the automated operations. This information is contained in the access_token field when accessing the Akamai API."
+        "description": "Password used to access the NetApp ONTAP server to which you will connect and perform the automated operations."
       },
       {
         "title": "Verify SSL",

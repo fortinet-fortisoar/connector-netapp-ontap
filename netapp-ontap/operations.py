@@ -69,7 +69,8 @@ def check_health(config):
     try:
         logger.info("Invoking check_health")
         akamai = NetAppOntap(config)
-        response = akamai.make_api_call(endpoint='/api/security/accounts')
+        endpoint = "{0}{1}".format(ENDPOINT, 'accounts')
+        response = akamai.make_api_call(endpoint=endpoint)
         if response:
             return True
     except Exception as err:
@@ -83,17 +84,19 @@ def handle_datetime(value):
 
 def get_security_accounts(config, params):
     netapp = NetAppOntap(config)
+    endpoint = "{0}{1}".format(ENDPOINT, 'accounts')
     if params.get('fields'):
         params['fields'] = [x.strip() for x in params.get('fields').split(',')]
     if params.get('order_by'):
         params['order_by'] = [sort_order_mapping.get(params.get('order_by'))]
 
-    response = netapp.make_api_call(endpoint='/api/security/accounts', params=params)
+    response = netapp.make_api_call(endpoint=endpoint, params=params)
     return response
 
 
 def get_security_audit_messages(config, params):
     netapp = NetAppOntap(config)
+    endpoint = "{0}{1}".format(ENDPOINT, 'audit/messages')
     if params.get('timestamp'):
         params['timestamp'] = handle_datetime(params.get('timestamp'))
     if params.get('fields'):
@@ -101,24 +104,25 @@ def get_security_audit_messages(config, params):
     if params.get('order_by'):
         params['order_by'] = [sort_order_mapping.get(params.get('order_by'))]
 
-    response = netapp.make_api_call(endpoint='/api/security/audit/messages', params=params)
+    response = netapp.make_api_call(endpoint=endpoint, params=params)
     return response
 
 
 def get_security_roles(config, params):
     netapp = NetAppOntap(config)
+    endpoint = "{0}{1}".format(ENDPOINT, 'roles')
     if params.get('fields'):
         params['fields'] = [x.strip() for x in params.get('fields').split(',')]
     if params.get('order_by'):
         params['order_by'] = [sort_order_mapping.get(params.get('order_by'))]
 
-    response = netapp.make_api_call(endpoint='/api/security/roles', params=params)
+    response = netapp.make_api_call(endpoint=endpoint, params=params)
     return response
 
 
 def update_user_password(config, params):
     netapp = NetAppOntap(config)
-
+    endpoint = "{0}{1}".format(ENDPOINT, 'authentication/password')
     payload = {
         "name": params.get('name'),
         "password": params.get('password')
@@ -128,7 +132,7 @@ def update_user_password(config, params):
     if params.get('owner_uuid'):
         payload.update({"owner": {"uuid": params.get('owner_uuid')}})
 
-    response = netapp.make_api_call(endpoint='/api/security/authentication/password', data=json.dumps(payload))
+    response = netapp.make_api_call(endpoint=endpoint, data=json.dumps(payload))
     return {'message': 'Created', 'status': 'Success'}
 
 
