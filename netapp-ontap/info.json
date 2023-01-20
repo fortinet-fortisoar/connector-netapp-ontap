@@ -9,7 +9,7 @@
   "category": "Cloud Security",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/netapp-ontap/490/netapp-ontap-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -19,7 +19,7 @@
         "visible": true,
         "type": "text",
         "name": "server_url",
-        "description": "URL or host of the NetApp ONTAP server to which you connect and perform the automated operations."
+        "description": "URL or hostname of the NetApp ONTAP server to connect and perform the automated operations."
       },
       {
         "title": "Username",
@@ -28,7 +28,7 @@
         "visible": true,
         "type": "text",
         "name": "username",
-        "description": "Username to access the NetApp ONTAP server to which you will connect and perform the automated operations."
+        "description": "Username to access the NetApp ONTAP server to connect and perform the automated operations."
       },
       {
         "title": "Password",
@@ -37,7 +37,7 @@
         "visible": true,
         "type": "password",
         "name": "password",
-        "description": "Password used to access the NetApp ONTAP server to which you will connect and perform the automated operations."
+        "description": "Password used to access the NetApp ONTAP server to connect and perform the automated operations."
       },
       {
         "title": "Verify SSL",
@@ -47,7 +47,7 @@
         "type": "checkbox",
         "name": "verify_ssl",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True."
       }
     ]
   },
@@ -55,7 +55,7 @@
     {
       "operation": "get_security_accounts",
       "title": "Get Security Accounts",
-      "description": "Retrieves a list of user accounts in the cluster from NetApp ONTAP based on the input parameters you have specified.",
+      "description": "Retrieves a list of user accounts in the cluster from NetApp ONTAP based on the fields, maximum count of records, and the sort order you have specified.",
       "category": "investigation",
       "annotation": "get_security_accounts",
       "output_schema": {
@@ -115,7 +115,8 @@
           "visible": true,
           "type": "text",
           "name": "fields",
-          "description": "Specify the comma separated fields to return from NetApp ONTAP."
+          "tooltip": "Specify a comma-separated list of fields to return.",
+          "description": "Specify a comma-separated list of fields to return from NetApp ONTAP."
         },
         {
           "title": "Limit",
@@ -124,7 +125,8 @@
           "visible": true,
           "type": "integer",
           "name": "max_records",
-          "description": "Limit the number of records to be returned from NetApp ONTAP."
+          "tooltip": "Specify the maximum count of records to fetch.",
+          "description": "Specify the maximum count of records to fetch from NetApp ONTAP."
         },
         {
           "title": "Return Records",
@@ -134,7 +136,8 @@
           "type": "checkbox",
           "name": "return_records",
           "value": true,
-          "description": "The default is true for GET calls. When set to false, only the number of records is returned from NetApp ONTAP."
+          "tooltip": "Select whether to return the records or just the count of records. The default is true for GET calls. When set to false, only the number of records is sent by NetApp ONTAP.",
+          "description": "Select whether to return the records or just the count of records. The default is true for GET calls. When set to false, only the number of records is sent by NetApp ONTAP."
         },
         {
           "title": "Return Timeout",
@@ -144,7 +147,8 @@
           "type": "integer",
           "name": "return_timeout",
           "value": 15,
-          "description": "The number of seconds to allow the call to execute before returning. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
+          "tooltip": "Specify, in seconds, the time to wait for the completion of execution. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached.",
+          "description": "Specify, in seconds, the time to wait for the completion of execution. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
         },
         {
           "title": "Sort Order",
@@ -158,14 +162,15 @@
           ],
           "name": "order_by",
           "value": "asc",
-          "description": "Order results by specified fields and optional [asc|desc] direction. Default direction is ‘asc’ for ascending."
+          "tooltip": "Select the sort order of results from the following options: Ascending or Descending. Default is Ascending.",
+          "description": "Select the sort order of results from the following options: Ascending or Descending. Default is Ascending."
         }
       ]
     },
     {
       "operation": "get_security_audit_messages",
       "title": "Get Security Audit Messages",
-      "description": "Retrieves the administrative audit log viewer from NetApp ONTAP based on the input parameters you have specified.",
+      "description": "Retrieves the administrative audit log viewer from NetApp ONTAP based on the timestamp, session ID, and other parameters you have specified.",
       "category": "investigation",
       "annotation": "get_security_audit_messages",
       "output_schema": {
@@ -220,7 +225,8 @@
           "visible": true,
           "type": "datetime",
           "name": "timestamp",
-          "description": "Specify the timestamp of the audit log to be fetched from NetApp ONTAP."
+          "tooltip": "Specify the timestamp of the audit messages to filter the results received from NetApp ONTAP.",
+          "description": "Specify the timestamp of the audit messages to filter the results received from NetApp ONTAP."
         },
         {
           "title": "State",
@@ -229,7 +235,8 @@
           "visible": true,
           "type": "text",
           "name": "state",
-          "description": "State of the audit log that you want to fetch from NetApp ONTAP."
+          "tooltip": "Specify the state of the audit log to filter the results.",
+          "description": "Specify the state of the audit log to filter the results received from NetApp ONTAP."
         },
         {
           "title": "Application",
@@ -238,7 +245,8 @@
           "visible": true,
           "type": "text",
           "name": "application",
-          "description": "Application of the audit log that you want to fetch from NetApp ONTAP."
+          "tooltip": "Specify the application of the audit log to filter the results.",
+          "description": "Specify the application of the audit log to filter the results received from NetApp ONTAP."
         },
         {
           "title": "Session ID",
@@ -247,7 +255,8 @@
           "visible": true,
           "type": "text",
           "name": "session_id",
-          "description": "Session ID of the audit log that you want to fetch from NetApp ONTAP."
+          "tooltip": "Specify the session ID of the audit log to filter the results.",
+          "description": "Specify the session ID of the audit log to filter the results received from NetApp ONTAP."
         },
         {
           "title": "Scope",
@@ -256,7 +265,8 @@
           "visible": true,
           "type": "text",
           "name": "scope",
-          "description": "Scope of the audit log that you want to fetch from NetApp ONTAP. e.g. svm, cluster."
+          "tooltip": "Specify the scope of the audit log to filter the results. e.g. svm, cluster.",
+          "description": "Specify the scope of the audit log to filter the results received from NetApp ONTAP. e.g. svm, cluster."
         },
         {
           "title": "Command ID",
@@ -265,7 +275,8 @@
           "visible": true,
           "type": "text",
           "name": "command_id",
-          "description": "Command ID of the audit log that you want to fetch from NetApp ONTAP."
+          "tooltip": "Specify the command ID of the audit log to filter the results.",
+          "description": "Specify the command ID of the audit log to filter the results received from NetApp ONTAP."
         },
         {
           "title": "Index",
@@ -274,7 +285,8 @@
           "visible": true,
           "type": "integer",
           "name": "index",
-          "description": "Index of the audit log that you want to fetch from NetApp ONTAP."
+          "tooltip": "Specify the index of the audit log to filter the results.",
+          "description": "Specify the index of the audit log to filter the results received from NetApp ONTAP."
         },
         {
           "title": "Location",
@@ -283,7 +295,8 @@
           "visible": true,
           "type": "integer",
           "name": "location",
-          "description": "Location of the audit log that you want to fetch from NetApp ONTAP."
+          "tooltip": "Specify the location of the audit log to filter the results.",
+          "description": "Specify the location of the audit log to filter the results received from NetApp ONTAP."
         },
         {
           "title": "Fields",
@@ -292,7 +305,8 @@
           "visible": true,
           "type": "text",
           "name": "fields",
-          "description": "Specify the fields to return from NetApp ONTAP."
+          "tooltip": "Specify a comma-separated list of fields to return from NetApp ONTAP.",
+          "description": "Specify a comma-separated list of fields to return from NetApp ONTAP."
         },
         {
           "title": "Limit",
@@ -301,7 +315,8 @@
           "visible": true,
           "type": "integer",
           "name": "max_records",
-          "description": "Limit the number of records to be returned from NetApp ONTAP."
+          "tooltip": "Specify the maximum count of records to receive from NetApp ONTAP.",
+          "description": "Specify the maximum count of records to receive from NetApp ONTAP."
         },
         {
           "title": "Return Records",
@@ -311,7 +326,8 @@
           "type": "checkbox",
           "name": "return_records",
           "value": true,
-          "description": "The default is true for GET calls. When set to false, only the number of records is returned from NetApp ONTAP."
+          "tooltip": "Select whether to return the records or just the count of records. The default is true for GET calls. When set to false, only the number of records is sent by NetApp ONTAP.",
+          "description": "Select whether to return the records or just the count of records. The default is true for GET calls. When set to false, only the number of records is sent by NetApp ONTAP."
         },
         {
           "title": "Return Timeout",
@@ -321,7 +337,8 @@
           "type": "integer",
           "name": "return_timeout",
           "value": 15,
-          "description": "The number of seconds to allow the call to execute before returning. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
+          "tooltip": "Specify, in seconds, the time to wait for the completion of execution. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached.",
+          "description": "Specify, in seconds, the time to wait for the completion of execution. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
         },
         {
           "title": "Sort Order",
@@ -335,14 +352,15 @@
           ],
           "name": "order_by",
           "value": "asc",
-          "description": "Order results by specified fields and optional [asc|desc] direction. Default direction is ‘asc’ for ascending."
+          "tooltip": "Select the sort order of results from the following options: Ascending or Descending. Default is Ascending.",
+          "description": "Select the sort order of results from the following options: Ascending or Descending. Default is Ascending."
         }
       ]
     },
     {
       "operation": "get_security_roles",
       "title": "Get Security Roles",
-      "description": "Retrieves a list of roles configured in the cluster from NetApp ONTAP based on the input parameters you have specified.",
+      "description": "Retrieves a list of roles configured in the cluster from NetApp ONTAP based on the fields, maximum count of records, and other parameters you have specified.",
       "category": "investigation",
       "annotation": "get_security_roles",
       "output_schema": {
@@ -397,7 +415,8 @@
           "visible": true,
           "type": "text",
           "name": "fields",
-          "description": "Specify the fields to return from NetApp ONTAP."
+          "tooltip": "Specify a comma-separated list of fields to return from NetApp ONTAP.",
+          "description": "Specify a comma-separated list of fields to return from NetApp ONTAP."
         },
         {
           "title": "Limit",
@@ -406,7 +425,8 @@
           "visible": true,
           "type": "integer",
           "name": "max_records",
-          "description": "Limit the number of records to be returned from NetApp ONTAP."
+          "tooltip": "Specify the maximum count of records to fetch from NetApp ONTAP.",
+          "description": "Specify the maximum count of records to fetch from NetApp ONTAP."
         },
         {
           "title": "Return Records",
@@ -416,7 +436,8 @@
           "type": "checkbox",
           "name": "return_records",
           "value": true,
-          "description": "The default is true for GET calls. When set to false, only the number of records is returned from NetApp ONTAP."
+          "tooltip": "Select whether to return the records or just the count of records. The default is true for GET calls. When set to false, only the number of records is sent by NetApp ONTAP.",
+          "description": "Select whether to return the records or just the count of records. The default is true for GET calls. When set to false, only the number of records is sent by NetApp ONTAP."
         },
         {
           "title": "Return Timeout",
@@ -426,7 +447,8 @@
           "type": "integer",
           "name": "return_timeout",
           "value": 15,
-          "description": "The number of seconds to allow the call to execute before returning. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
+          "tooltip": "Specify, in seconds, the time to wait for the completion of execution. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached.",
+          "description": "Specify, in seconds, the time to wait for the completion of execution. When iterating over a collection, the default is 15 seconds. ONTAP returns earlier if either max records or the end of the collection is reached."
         },
         {
           "title": "Sort Order",
@@ -440,7 +462,8 @@
           ],
           "name": "order_by",
           "value": "asc",
-          "description": "Order results by specified fields and optional [asc|desc] direction. Default direction is ‘asc’ for ascending."
+          "tooltip": "Select the sort order of results from the following options: Ascending or Descending. Default is Ascending.",
+          "description": "Select the sort order of results from the following options: Ascending or Descending. Default is Ascending."
         }
       ]
     },
@@ -463,7 +486,8 @@
           "visible": true,
           "type": "text",
           "name": "name",
-          "description": "User account name whose password you need to chnage in NetApp ONTAP."
+          "tooltip": "Specify the user name of the account whose password you need to change.",
+          "description": "Specify the user name of the account whose password you need to change in NetApp ONTAP."
         },
         {
           "title": "Password",
@@ -472,7 +496,8 @@
           "visible": true,
           "type": "password",
           "name": "max_records",
-          "description": "Limit the number of records to be returned from NetApp ONTAP."
+          "tooltip": "Specify the new password to update.",
+          "description": "Specify the new password to update in NetApp ONTAP."
         },
         {
           "title": "Owner Name",
@@ -481,7 +506,8 @@
           "visible": true,
           "type": "text",
           "name": "owner_name",
-          "description": "Name of the SVM for an SVM-scoped user account in NetApp ONTAP."
+          "tooltip": "Specify the name of the SVM for an SVM-scoped user account.",
+          "description": "Specify the name of the SVM for an SVM-scoped user account in NetApp ONTAP."
         },
         {
           "title": "Owner UUID",
@@ -490,7 +516,8 @@
           "visible": true,
           "type": "text",
           "name": "owner_uuid",
-          "description": "UUID of the SVM for an SVM-scoped user account in NetApp ONTAP."
+          "tooltip": "Specify the UUID of the SVM for an SVM-scoped user account.",
+          "description": "Specify the UUID of the SVM for an SVM-scoped user account in NetApp ONTAP."
         }
       ]
     }
